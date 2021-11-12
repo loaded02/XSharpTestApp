@@ -9,9 +9,9 @@ BEGIN NAMESPACE TestAppXSharp
         LOCAL _oDbAuftrag as DBServer
         _oDbAuftrag := DBServer{"C:\tmp\data\dauftrag"}
 
-   	    _oDbAuftrag:setOrder ("iaufnum")
+    	_oDbAuftrag:setOrder ("iaufnum")
         
-        _oDbAuftrag:Zap()
+        //_oDbAuftrag:Zap()
         
         IF _oDbAuftrag:Append()
             _oDbAuftrag:FIELDPUT(#AUNUMMER, "123")
@@ -33,7 +33,7 @@ BEGIN NAMESPACE TestAppXSharp
         LOCAL i as DWORD
         _oDbAuftrag := DBServer{"C:\tmp\data\dauftrag"}
 
-   	    _oDbAuftrag:setOrder ("iaufnum")
+    	_oDbAuftrag:setOrder ("iaufnum")
             
         _oDbAuftrag:GoTop()
         i := 1
@@ -70,24 +70,24 @@ BEGIN NAMESPACE TestAppXSharp
 	FUNCTION Start() AS VOID STRICT
     
 		SetCollation(#CLIPPER)
-        SetAnsi(false)
-        SetInternational (#CLIPPER)
-        SetDecimalSep  (Asc(","))
-        SetThousandSep (Asc("."))
-        SetDateCountry(GERMAN)
-        SetEpoch(1990)
-        SetCentury(true)
-        SetExclusive(FALSE)
-        SetDeleted(true)
-        Enable3dControls ()
+		SetAnsi(false)
+		SetInternational (#CLIPPER)
+		SetDecimalSep  (Asc(","))
+		SetThousandSep (Asc("."))
+		SetDateCountry(GERMAN)
+		SetEpoch(1990)
+		SetCentury(true)
+		SetExclusive(FALSE)
+		SetDeleted(true)
+		Enable3dControls ()
 
-	    RDDSETDEFAULT("DBFCDX")
-        //RDDSETDEFAULT("AXDBFCDX")
+		RDDSETDEFAULT("DBFCDX")
+		//RDDSETDEFAULT("AXDBFCDX")
 
-        ObfuscateAuftrag()
-        //TestAuftrag()
-        
-        System.Console.WriteLine("Done")
-        System.Console.ReadLine();
+		//ObfuscateAuftrag()
+		TestAuftrag()
+
+		System.Console.WriteLine("Done")
+		System.Console.ReadLine();
                     
     END NAMESPACE
