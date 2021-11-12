@@ -27,45 +27,6 @@ BEGIN NAMESPACE TestAppXSharp
             _oDbAuftrag:skip(1)
         ENDDO
         _oDbAuftrag:Close()
-        
-    FUNCTION ObfuscateAuftrag() AS VOID
-        LOCAL _oDbAuftrag as DBServer
-        LOCAL i as DWORD
-        _oDbAuftrag := DBServer{"C:\tmp\data\dauftrag"}
-
-    	_oDbAuftrag:setOrder ("iaufnum")
-            
-        _oDbAuftrag:GoTop()
-        i := 1
-        System.Console.WriteLine("Starting obfuscation")
-        DO WHILE !_oDbAuftrag:eof
-            _oDbAuftrag:FIELDPUT(#AUKUNDE, "TestKunde")
-            _oDbAuftrag:FIELDPUT(#AUKUNR, "12345")
-            _oDbAuftrag:FIELDPUT(#AUMODNUM, "12345")
-            _oDbAuftrag:FIELDPUT(#AUWUNSCHKW, "202140")
-            _oDbAuftrag:FIELDPUT(#AULIEFKW, "202140")
-            _oDbAuftrag:FIELDPUT(#AUFERTKW, "202140")
-            _oDbAuftrag:FIELDPUT(#AUBESTDAT, today())
-            _oDbAuftrag:FIELDPUT(#ABDATUM, today())
-            _oDbAuftrag:FIELDPUT(#AUKMODNR, "12345")
-            _oDbAuftrag:FIELDPUT(#AUPREIS, 10)
-            _oDbAuftrag:FIELDPUT(#AUHEIM, "")
-            _oDbAuftrag:FIELDPUT(#BEDARFKW, "202140")
-            _oDbAuftrag:FIELDPUT(#AUFERTDAT, today())
-            _oDbAuftrag:FIELDPUT(#STKLI_DAT, today())
-            _oDbAuftrag:FIELDPUT(#AULIEFAD, "")
-            _oDbAuftrag:FIELDPUT(#WUNSCH_DAT, today())
-            _oDbAuftrag:FIELDPUT(#AUKUBESTNR, "67890")
-            _oDbAuftrag:FIELDPUT(#PLATTFORM, "shop")
-            _oDbAuftrag:FIELDPUT(#ZDATUM, today())
-            _oDbAuftrag:FIELDPUT(#ZBETRAG, 10)
-            _oDbAuftrag:FIELDPUT(#BANK, "Paypal")
-            _oDbAuftrag:skip(1)
-            System.Console.WriteLine("Fixed Entry: " + i:ToString())
-            i := i + 1
-        ENDDO
-        _oDbAuftrag:Close()
-        System.Console.WriteLine("Done with obfuscation")
 
     FUNCTION Start() AS VOID STRICT
 
@@ -84,7 +45,6 @@ BEGIN NAMESPACE TestAppXSharp
 	RDDSETDEFAULT("DBFCDX")
 	//RDDSETDEFAULT("AXDBFCDX")
 
-	//ObfuscateAuftrag()
 	TestAuftrag()
 
 	System.Console.WriteLine("Done")
