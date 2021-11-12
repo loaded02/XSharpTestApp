@@ -1,4 +1,4 @@
-﻿USING System
+USING System
 using bTools.bServer
 using XSharp.RDD
 
@@ -67,27 +67,27 @@ BEGIN NAMESPACE TestAppXSharp
         _oDbAuftrag:Close()
         System.Console.WriteLine("Done with obfuscation")
 
-	FUNCTION Start() AS VOID STRICT
-    
-		SetCollation(#CLIPPER)
-		SetAnsi(false)
-		SetInternational (#CLIPPER)
-		SetDecimalSep  (Asc(","))
-		SetThousandSep (Asc("."))
-		SetDateCountry(GERMAN)
-		SetEpoch(1990)
-		SetCentury(true)
-		SetExclusive(FALSE)
-		SetDeleted(true)
-		Enable3dControls ()
+    FUNCTION Start() AS VOID STRICT
 
-		RDDSETDEFAULT("DBFCDX")
-		//RDDSETDEFAULT("AXDBFCDX")
+	SetCollation(#CLIPPER)
+	SetAnsi(false)
+	SetInternational (#CLIPPER)
+	SetDecimalSep  (Asc(","))
+	SetThousandSep (Asc("."))
+	SetDateCountry(GERMAN)
+	SetEpoch(1990)
+	SetCentury(true)
+	SetExclusive(FALSE)
+	SetDeleted(true)
+	Enable3dControls ()
 
-		//ObfuscateAuftrag()
-		TestAuftrag()
+	RDDSETDEFAULT("DBFCDX")
+	//RDDSETDEFAULT("AXDBFCDX")
 
-		System.Console.WriteLine("Done")
-		System.Console.ReadLine();
+	//ObfuscateAuftrag()
+	TestAuftrag()
+
+	System.Console.WriteLine("Done")
+	System.Console.ReadLine();
                     
     END NAMESPACE
